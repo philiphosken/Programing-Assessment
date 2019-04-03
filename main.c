@@ -4,13 +4,17 @@
 
 int main()
 {
-char alpha[] = "TEST"; ///The Text that is going to become encrypted is going to be typed here///
-int i;
-int N = 4;
-int k = -1;
+char alphatxt[] = "TEST"; //The Text that is going to become encrypted is going to be typed here//
+int i; //Counter
+int N = 4; //Number of Values in the Array
+int k = 4; //KEY or the number of charcters shifted in the rotation cypher
+
+//error message needed here if k is bigger or smaller then 246 and -26
 
 for (i = 0 ; i < N ; ++i){
-    printf("%c", alpha[i] + k);
+    
+    //if the ASCII is > Z (90) then -26 and add k
+    printf("%c", alphatxt[i] + k);
     
     
 }

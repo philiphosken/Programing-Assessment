@@ -2,39 +2,38 @@
 
 int main()
 {
-char alphatxt[] = "TESTING ONE TWO"; //Text that is to become encrypted
-int N = 15; //Number of Values in the Array above
-int i = 0; //Counter Index in order to read alter and reprint each element in the array
-int k = 4; //KEY = the number of charcters shifted in the rotation cypher
 
-if (k > 26 || k < -26){ //if the value of k was 26 or greater, it would either remain unchanged or thered be an equivelent key between -25 and 25
-    printf("%d is an invalid value for k. Select an interger between -25 and 25", k); //Prints an error message if this is the case
-} else //If k is a valid number then continue to for loop
+int k = 1; //KEY = the number of charcters shifted in the rotation cypher to generate coded message 
 
 
-for (i = 0 ; i < N ; ++i){
-    int phi = alphatxt[i]; //phi = place holding integer. This whill store each number ASCII number in the array to the variable 'phi'
+    FILE *message;
+    FILE *coded;
     
+    message = fopen("message.txt", "r");
+    coded = fopen("coded.txt", "w");
+    
+    while (feof(message) == 0){
+        char phi;
+        fscanf(message, "%c", &phi);
+      
+          
     if (phi == 32){
-     printf("%c", phi); //Just prints the space
+     fprintf(coded, "%c", phi); //Just prints the space
+     printf("%c", phi);
     
     }else if((phi + k) > 90){ // If it exceeds 'Z' after k is added, then simply take 26 away then add k
-        printf("%c", phi - 26 + k); 
+        fprintf(coded, "%c", phi - 26 + k); 
+        printf("%c", phi - 26 + k);
         
     } else if ( (phi + k) < 65 ){ //If it exceeds 'Z' after k is added, then simply add 26 away then add k
+        fprintf(coded, "%c", phi + 26 + k);
         printf("%c", phi + 26 + k);
             
-    } else printf("%c", phi + k);// if within the bounds of ASCII 'A' and 'Z' just add k
+    } else { fprintf(coded, "%c", phi + k);// if within the bounds of ASCII 'A' and 'Z' just add k
+   printf("%c", phi + k);
+   }
 }
-      return 0;
-}
-
-FILE *input;
-input = fopen("input.txt", "r");
-if (input == NULL){
-    perror("fopen()")
-    return;
-}
-
+    }
+  
 
 

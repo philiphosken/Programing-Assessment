@@ -28,3 +28,13 @@ for (i = 0 ; i < N ; ++i){
 }
       return 0;
 }
+
+FILE *input;
+input = fopen("input.txt", "r");
+if (input == NULL){
+    perror("fopen()")
+    return;
+}
+
+
+
